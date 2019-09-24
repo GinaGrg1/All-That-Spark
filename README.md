@@ -22,8 +22,11 @@ For e.g, we can calculate how many records are corrupted or count events that oc
 for debugging purposes.
 
 Flatmap vs Map:
+
 greet = sc.textFile("greetings.txt")
+
 greet.map(lambda x: x.split()).collect()
+
 [['Good', 'Morning'], ['Good', 'Evening'], ['Good', 'Day'], ['Happy', 'Birthday'], ['Happy', 'New', 'Year']]
 greet.map(lambda x: x.split())
 
