@@ -25,30 +25,31 @@ for debugging purposes.
 Flatmap vs Map:
 ============
 
-::
-
     greet = sc.textFile("greetings.txt")
 
-greet.map(lambda x: x.split()).collect()
+    greet.map(lambda x: x.split()).collect()
 
 [['Good', 'Morning'], ['Good', 'Evening'], ['Good', 'Day'], ['Happy', 'Birthday'], ['Happy', 'New', 'Year']]
-greet.map(lambda x: x.split())
 
-greet.flatMap(lambda x: x.split()).collect()
+    greet.map(lambda x: x.split())
+
+    greet.flatMap(lambda x: x.split()).collect()
 ['Good', 'Morning', 'Good', 'Evening', 'Good', 'Day', 'Happy', 'Birthday', 'Happy', 'New', 'Year']
-greet.flatMap(lambda x: x.split()).countByValue()
-{'Good': 3, 'Morning': 1, 'Evening': 1, 'Day': 1, 'Happy': 2, 'Birthday': 1, 'New': 1, 'Year': 1}
 
-greet.flatMap(lambda x: x.split()).countByKey()
-{'G': 3, 'M': 1, 'E': 1, 'D': 1, 'H': 2, 'B': 1, 'N': 1, 'Y': 1}
+    greet.flatMap(lambda x: x.split()).countByValue()
+    {'Good': 3, 'Morning': 1, 'Evening': 1, 'Day': 1, 'Happy': 2, 'Birthday': 1, 'New': 1, 'Year': 1}
+
+    greet.flatMap(lambda x: x.split()).countByKey()
+    {'G': 3, 'M': 1, 'E': 1, 'D': 1, 'H': 2, 'B': 1, 'N': 1, 'Y': 1}
 
 Another example:
-rdd = sc.parallelize([2,3,4]) 
-rdd.flatMap(lambda x: range(1, x)).collect()
-[1, 1, 2, 1, 2, 3]
 
-rdd.map(lambda x: range(1, x)).collect()
-[range(1, 2), range(1, 3), range(1, 4)]
+    rdd = sc.parallelize([2,3,4]) 
+    rdd.flatMap(lambda x: range(1, x)).collect()
+    [1, 1, 2, 1, 2, 3]
+
+    rdd.map(lambda x: range(1, x)).collect()
+    [range(1, 2), range(1, 3), range(1, 4)]
 
 cache() vs persist():
 persist() lets you cache it to disk instead of just memory, in case a node fails.
