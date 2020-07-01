@@ -21,9 +21,13 @@ These are variables that are used for aggregating information across the executo
 For e.g, we can calculate how many records are corrupted or count events that occur during job execution
 for debugging purposes.
 
-Flatmap vs Map:
 
-greet = sc.textFile("greetings.txt")
+Flatmap vs Map:
+============
+
+::
+
+    greet = sc.textFile("greetings.txt")
 
 greet.map(lambda x: x.split()).collect()
 
